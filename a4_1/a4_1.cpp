@@ -19,11 +19,11 @@
 using namespace std;
 
 
-const int NUM_CARDS = 5;                        // Defines number of cards to get from user
+int NUM_CARDS = 1;                        // Defines number of cards to get from user
 const int NUM_INT = 8;
 
 
-//void getNumCards(int &numCard);
+void getNumCards();
 void getCards(int hand[]);
 void validateInput(int &card, int cardNum);
 void countCards(const int hand[], int countCards[]);
@@ -37,6 +37,7 @@ bool containsPair(const int hand[]);
 int main(int argc, const char * argv[]) {
     int hand[NUM_CARDS];                       // Holds array of cards with integers 2 - 9
     
+    getNumCards();
     getCards(hand);
     
     if (containsFourOfaKind(hand)) {
@@ -63,8 +64,28 @@ int main(int argc, const char * argv[]) {
 
 
 
+// Definition of getNumCards. Function gets user input for number of cards to be played in
+// a hand, validates it to ensure that there is at least one card and assigns it to global
+// variable.
+
+void getNumCards() {
+    do {
+        cout << "Enter the number of cards to be dealt in a hand: ";
+        cin >> NUM_CARDS;
+        
+        if (NUM_CARDS < 1) {
+            cout << "Invalid input: A hand cannot have less than 1 card." << endl;
+        }
+    } while (NUM_CARDS < 1);
+}
+
+
+
+
+
+
 // Definition of getCards. Function passes in an uninitialized array of integers and uses
-// a global constant for size of hand. It gets the user input for the designated size with
+// a global variable for size of hand. It gets the user input for the designated size with
 // integer values from 2 to 9 and stores it into the array.
 
 void getCards(int hand[]) {
