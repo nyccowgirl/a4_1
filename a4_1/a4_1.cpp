@@ -18,9 +18,10 @@
 #include <iostream>
 using namespace std;
 
-
-int NUM_CARDS = 1;                        // Defines number of cards to get from user
-const int NUM_INT = 8;
+const int LOW = 2;                          // Defines lowest value that a card can have
+const int HIGH = 9;                         // Defines highest value that a card can have
+const int NUM_INT = (HIGH - LOW + 1);       // Defines range of values that a card can have
+int NUM_CARDS = 1;                          // Defines initial no. of cards to get from user
 
 
 void getNumCards();
@@ -35,7 +36,7 @@ bool containsTwoPair(const int hand[]);
 bool containsPair(const int hand[]);
 
 int main(int argc, const char * argv[]) {
-    int hand[NUM_CARDS];                       // Holds array of cards with integers 2 - 9
+    int hand[NUM_CARDS];                    // Holds array of cards for a hand
     
     getNumCards();
     getCards(hand);
@@ -85,13 +86,14 @@ void getNumCards() {
 
 
 // Definition of getCards. Function passes in an uninitialized array of integers and uses
-// a global variable for size of hand. It gets the user input for the designated size with
-// integer values from 2 to 9 and stores it into the array.
+// a global variable for size of hand. It gets the user input for each card in a hand with
+// integer values from LOW to HIGH (e.g., 2 to 9) and stores it into the array.
 
 void getCards(int hand[]) {
     int card;
     
-    cout << "Enter " << NUM_CARDS << " numeric cards, no face cards. Use 2 - 9." << endl;
+    cout << "Enter " << NUM_CARDS << " numeric cards, no face cards. ";
+    cout << "Use " << LOW << " - " << HIGH << "." << endl;
     
     for (int x = 0; x < NUM_CARDS; x++) {
         cout << "Card " << (x + 1) << ": ";
@@ -107,12 +109,13 @@ void getCards(int hand[]) {
 
 
 // Definition of function validateInput. Function passes in a card and the card number to
-// validate. It determines if it is between 2 to 9. If not, it asks for user to input a new
-// card and passes it as a reference variable.
+// validate. It determines if it is between LOW to HIGH (e.g., 2 to 9). If not, it asks for
+// user to input a new card and passes it as a reference variable.
 
 void validateInput(int &card, int cardNum) {
-    while (!(card >= 2 && card <= 9)) {
-        cout << "Invalid input: Cards can only be between 2 and 9." << endl;
+    while (!(card >= LOW && card <= HIGH)) {
+        cout << "Invalid input: Cards can only be between ";
+        cout << LOW << " and " << HIGH << "." << endl;
         cout << "Card " << cardNum << ": ";
         cin >> card;
     }
@@ -131,7 +134,7 @@ void validateInput(int &card, int cardNum) {
 void countCards(const int hand[], int count[]) {
     
     for (int x = 0; x < NUM_CARDS; x++) {
-        count[hand[x] - 2]++;
+        count[hand[x] - LOW]++;
     }
     
 //    cout << "count = {";
