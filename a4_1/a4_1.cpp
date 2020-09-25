@@ -38,7 +38,7 @@ bool containsPair(const int hand[]);
 int main(int argc, const char * argv[]) {
     int hand[NUM_CARDS];                    // Holds array of cards for a hand
     
-    cout << hand[NUM_CARDS] << endl;
+    cout << "";       // What about a cout causes program to work or not work for cards > 6?
 
     getNumCards();
     getCards(hand);
@@ -122,13 +122,6 @@ void validateInput(int &card, int cardNum) {
         cin >> card;
     }
 }
-
-
-
-
-
-
-// Definition of function containsThree
 
 
 
