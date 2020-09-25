@@ -183,12 +183,12 @@ bool containsFourOfaKind(const int hand[]) {
 
 bool containsFullHouse(const int hand[]) {
     int count[NUM_INT] = {0};
-    bool threeOfaKind, pair;
+    bool threeOfaKind = false, pair = false;
     
     countCards(hand, count);
     
     for (int x = 0; x < NUM_INT; x++) {
-        if (count[x] >= 3) {
+        if (!threeOfaKind && count[x] >= 3) {
             threeOfaKind = true;
         } else if (count[x] >= 2) {
             pair = true;
