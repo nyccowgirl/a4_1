@@ -21,7 +21,7 @@ using namespace std;
 const int LOW = 2;                          // Defines lowest value that a card can have
 const int HIGH = 9;                         // Defines highest value that a card can have
 const int NUM_INT = (HIGH - LOW + 1);       // Defines range of values that a card can have
-int NUM_CARDS = 1;                          // Defines initial no. of cards to get from user
+int NUM_CARDS = 20;                         // Defines initial no. of cards to get from user
 
 
 void getNumCards();
@@ -38,8 +38,6 @@ bool containsPair(const int hand[]);
 int main(int argc, const char * argv[]) {
     int hand[NUM_CARDS];                    // Holds array of cards for a hand
     
-    cout << "";       // What about a cout causes program to work or not work for cards > 6?
-
     getNumCards();
     getCards(hand);
     
@@ -58,7 +56,6 @@ int main(int argc, const char * argv[]) {
     } else {
         cout << "High Card!" << endl;
     }
-    
     return 0;
 }
 
@@ -69,7 +66,7 @@ int main(int argc, const char * argv[]) {
 
 // Definition of getNumCards. Function gets user input for number of cards to be played in
 // a hand, validates it to ensure that there is at least one card and assigns it to global
-// variable.
+// variable, which was initially assigned a high number for memory allocation purposes.
 
 void getNumCards() {
     do {
@@ -110,9 +107,10 @@ void getCards(int hand[]) {
 
 
 
-// Definition of function validateInput. Function passes in a card and the card number to
-// validate. It determines if it is between LOW to HIGH (e.g., 2 to 9). If not, it asks for
-// user to input a new card and passes it as a reference variable.
+// Definition of function validateInput. Function passes in a card value inputted from user
+// to validate and the card number in the hand. It determines if the value is between LOW
+// and HIGH (e.g., 2 to 9). If not, it asks for user to input a new card and passes it as a
+// reference variable.
 
 void validateInput(int &card, int cardNum) {
     while (!(card >= LOW && card <= HIGH)) {
@@ -139,7 +137,7 @@ void countCards(const int hand[], int count[]) {
         count[hand[x] - LOW]++;
     }
     
-//    cout << "count = {";
+//    cout << "count = {";                          // TEMP: To debug
 //    for (int x = 0; x < NUM_INT; x++) {
 //        if (x == (NUM_INT - 1)) {
 //            cout << count[x] << "}" << endl;
@@ -158,7 +156,7 @@ void countCards(const int hand[], int count[]) {
 // Definition of function containsFourOfaKind. Function passes in array of cards. It calls
 // function countCards to count number of each value (e.g., 2 to 9) and determines if there
 // is a four of a kind and returns true. Otherwise, it returns false. Note in the functions
-// testing for the type of hand, greater than or queal (>=) is used rather than equal
+// testing for the type of hand, greater than or equal to (>=) is used rather than equal
 // to (==) denoting the minimum value. This captures test cases where there are larger
 // hands (e.g., for 7-card hand containing 3 4s and 3 5s, the second three of a kind in
 // count array would not be viewed as a possible pair for a full house). Since the else/if
@@ -171,7 +169,7 @@ bool containsFourOfaKind(const int hand[]) {
     countCards(hand, count);
     
     for (int x = 0; x < NUM_INT; x++) {
-        if (count[x] >= 4) {                    // Use of >= in case of larger hands
+        if (count[x] >= 4) {
             return true;
         }
     }
@@ -185,7 +183,8 @@ bool containsFourOfaKind(const int hand[]) {
 
 // Definition of function containsFullHouse. Function passes in array of cards. It calls
 // function countCards to count number of each value (e.g., 2 to 9) and determines if there
-// is a full house (3 of a kind and pair) and returns true. Otherwise, it returns false.
+// is a full house (3 of a kind and pair) and returns true. Otherwise, it returns false. See
+// additional note in function containsFourOfaKind.
 
 bool containsFullHouse(const int hand[]) {
     int count[NUM_INT] = {0};
@@ -214,7 +213,8 @@ bool containsFullHouse(const int hand[]) {
 
 // Definition of function containsStraight. Function passes in array of cards. It calls
 // function countCards to count number of each value (e.g., 2 to 9) and determines if there
-// is a straight and returns true. Otherwise, it returns false.
+// is a straight and returns true. Otherwise, it returns false. See additional note in
+// function containsFourOfaKind.
 
 bool containsStraight(const int hand[]) {
     int count[NUM_INT] = {0};
@@ -243,7 +243,8 @@ bool containsStraight(const int hand[]) {
 
 // Definition of function containsThreeOfaKind. Function passes in array of cards. It calls
 // function countCards to count number of each value (e.g., 2 to 9) and determines if there
-// is a three of a kind and returns true. Otherwise, it returns false.
+// is a three of a kind and returns true. Otherwise, it returns false. See additional note
+// in function containsFourOfaKind.
 
 bool containsThreeOfaKind(const int hand[]) {
     int count[NUM_INT] = {0};
@@ -265,7 +266,8 @@ bool containsThreeOfaKind(const int hand[]) {
 
 // Definition of function containsTwoPairs. Function passes in array of cards. It calls
 // function countCards to count number of each value (e.g., 2 to 9) and determines if there
-// are two pairs and returns true. Otherwise, it returns false.
+// are two pairs and returns true. Otherwise, it returns false. See additional note in
+// function containsFourOfaKind.
 
 bool containsTwoPair(const int hand[]) {
     int count[NUM_INT] = {0};
@@ -292,7 +294,8 @@ bool containsTwoPair(const int hand[]) {
 
 // Definition of function containsPair. Function passes in array of cards. It calls
 // function countCards to count number of each value (e.g., 2 to 9) and determines if there
-// is a pair and returns true. Otherwise, it returns false.
+// is a pair and returns true. Otherwise, it returns false. See additional note in function
+// containsFourOfaKind.
 
 bool containsPair(const int hand[]) {
     int count[NUM_INT] = {0};
