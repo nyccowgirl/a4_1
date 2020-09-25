@@ -126,10 +126,17 @@ void validateInput(int &card, int cardNum) {
 
 
 
+// Definition of function containsThree
+
+
+
+
+
+
 // Definition of function countCards. Function passes in array of cards (hand) and array to
 // count the cards in the hand (count). It initializes the count array as 0 and counts the
-// number of each value (2 to 9) and stores it into the count array and passes it back by
-// reference.
+// number of each value (e.g., 2 to 9) and stores it into the count array and passes it
+// back by reference.
 
 void countCards(const int hand[], int count[]) {
     
@@ -154,8 +161,14 @@ void countCards(const int hand[], int count[]) {
 
 
 // Definition of function containsFourOfaKind. Function passes in array of cards. It calls
-// function countCards to count number of each value (2 to 9) and determines if there is
-// a four of a kind and returns true. Otherwise, it returns false.
+// function countCards to count number of each value (e.g., 2 to 9) and determines if there
+// is a four of a kind and returns true. Otherwise, it returns false. Note in the functions
+// testing for the type of hand, greater than or queal (>=) is used rather than equal
+// to (==) denoting the minimum value. This captures test cases where there are larger
+// hands (e.g., for 7-card hand containing 3 4s and 3 5s, the second three of a kind in
+// count array would not be viewed as a possible pair for a full house). Since the else/if
+// in the main function looks for highest value hand first, there wouldn't be a risk of
+// 3 4s and 3 5s being treated as 2-pair hand with >= vs. ==.
 
 bool containsFourOfaKind(const int hand[]) {
     int count[NUM_INT] = {0};
@@ -163,7 +176,7 @@ bool containsFourOfaKind(const int hand[]) {
     countCards(hand, count);
     
     for (int x = 0; x < NUM_INT; x++) {
-        if (count[x] >= 4) {
+        if (count[x] >= 4) {                    // Use of >= in case of larger hands
             return true;
         }
     }
@@ -176,19 +189,19 @@ bool containsFourOfaKind(const int hand[]) {
 
 
 // Definition of function containsFullHouse. Function passes in array of cards. It calls
-// function countCards to count number of each value (2 to 9) and determines if there is
-// a full house (3 of a kind and pair) and returns true. Otherwise, it returns false.
+// function countCards to count number of each value (e.g., 2 to 9) and determines if there
+// is a full house (3 of a kind and pair) and returns true. Otherwise, it returns false.
 
 bool containsFullHouse(const int hand[]) {
     int count[NUM_INT] = {0};
-    bool threeOfaKind, pair;
+    bool threeOfaKind = false, pair = false;
     
     countCards(hand, count);
     
     for (int x = 0; x < NUM_INT; x++) {
-        if (count[x] >= 3) {
+        if (count[x] >= 3) {                    // Use of >= in case of larger hands
             threeOfaKind = true;
-        } else if (count[x] >= 2) {
+        } else if (count[x] >= 2) {             // Use of >= in case of larger hands
             pair = true;
         }
         
@@ -205,8 +218,8 @@ bool containsFullHouse(const int hand[]) {
 
 
 // Definition of function containsStraight. Function passes in array of cards. It calls
-// function countCards to count number of each value (2 to 9) and determines if there is
-// a straight and returns true. Otherwise, it returns false.
+// function countCards to count number of each value (e.g., 2 to 9) and determines if there
+// is a straight and returns true. Otherwise, it returns false.
 
 bool containsStraight(const int hand[]) {
     int count[NUM_INT] = {0};
@@ -234,8 +247,8 @@ bool containsStraight(const int hand[]) {
 
 
 // Definition of function containsThreeOfaKind. Function passes in array of cards. It calls
-// function countCards to count number of each value (2 to 9) and determines if there is
-// a three of a kind and returns true. Otherwise, it returns false.
+// function countCards to count number of each value (e.g., 2 to 9) and determines if there
+// is a three of a kind and returns true. Otherwise, it returns false.
 
 bool containsThreeOfaKind(const int hand[]) {
     int count[NUM_INT] = {0};
@@ -256,8 +269,8 @@ bool containsThreeOfaKind(const int hand[]) {
 
 
 // Definition of function containsTwoPairs. Function passes in array of cards. It calls
-// function countCards to count number of each value (2 to 9) and determines if there are
-// two pairs and returns true. Otherwise, it returns false.
+// function countCards to count number of each value (e.g., 2 to 9) and determines if there
+// are two pairs and returns true. Otherwise, it returns false.
 
 bool containsTwoPair(const int hand[]) {
     int count[NUM_INT] = {0};
@@ -283,8 +296,8 @@ bool containsTwoPair(const int hand[]) {
 
 
 // Definition of function containsPair. Function passes in array of cards. It calls
-// function countCards to count number of each value (2 to 9) and determines if there is
-// a pair and returns true. Otherwise, it returns false.
+// function countCards to count number of each value (e.g., 2 to 9) and determines if there
+// is a pair and returns true. Otherwise, it returns false.
 
 bool containsPair(const int hand[]) {
     int count[NUM_INT] = {0};
