@@ -38,7 +38,7 @@ bool containsPair(const int hand[]);
 int main(int argc, const char * argv[]) {
     int hand[NUM_CARDS];                    // Holds array of cards for a hand
     
-//    cout << "";
+//    cout << "";            // What about a cout causes program to not work for cards > 6?
     
     getNumCards();
     getCards(hand);
