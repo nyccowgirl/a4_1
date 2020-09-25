@@ -38,6 +38,8 @@ bool containsPair(const int hand[]);
 int main(int argc, const char * argv[]) {
     int hand[NUM_CARDS];                    // Holds array of cards for a hand
     
+    cout << hand[NUM_CARDS] << endl;
+
     getNumCards();
     getCards(hand);
     
@@ -199,9 +201,9 @@ bool containsFullHouse(const int hand[]) {
     countCards(hand, count);
     
     for (int x = 0; x < NUM_INT; x++) {
-        if (count[x] >= 3) {                    // Use of >= in case of larger hands
+        if (!threeOfaKind && count[x] >= 3) {
             threeOfaKind = true;
-        } else if (count[x] >= 2) {             // Use of >= in case of larger hands
+        } else if (count[x] >= 2) {
             pair = true;
         }
         
@@ -315,6 +317,7 @@ bool containsPair(const int hand[]) {
 
 /*
  
+ Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 8
  Card 2: 7
@@ -324,6 +327,7 @@ bool containsPair(const int hand[]) {
  Two Pairs!
  Program ended with exit code: 0
  
+ Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 8
  Card 2: 7
@@ -333,6 +337,7 @@ bool containsPair(const int hand[]) {
  Straight!
  Program ended with exit code: 0
  
+ Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 9
  Card 2: 2
@@ -342,29 +347,60 @@ bool containsPair(const int hand[]) {
  High Card!
  Program ended with exit code: 0
  
- Enter 5 numeric cards, no face cards. Use 2 - 9.
+ Enter the number of cards to be dealt in a hand: 0
+ Invalid input: A hand cannot have less than 1 card.
+ Enter the number of cards to be dealt in a hand: 6
+ Enter 6 numeric cards, no face cards. Use 2 - 9.
  Card 1: 5
  Card 2: 6
  Card 3: 6
  Card 4: 5
  Card 5: 6
+ Card 6: 5
  Full House!
  Program ended with exit code: 0
  
+ Enter the number of cards to be dealt in a hand: 7
  Enter 7 numeric cards, no face cards. Use 2 - 9.
- Card 1: 1
- Invalid input: Cards can only be between 2 and 9.
  Card 1: 2
- Card 2: 10
- Invalid input: Cards can only be between 2 and 9.
  Card 2: 6
  Card 3: 5
- Card 4: 3
- Card 5: 4
- Card 6: 1
- Invalid input: Cards can only be between 2 and 9.
- Card 6: 2
- Card 7: 3
+ Card 4: 4
+ Card 5: 8
+ Card 6: 7
+ Card 7: 9
+ (lldb)
+ 
+ */
+
+/*
+ DEBUGGING:
+ 
+ Result without cout in main:
+ 
+ Enter the number of cards to be dealt in a hand: 7
+ Enter 7 numeric cards, no face cards. Use 2 - 9.
+ Card 1: 2
+ Card 2: 6
+ Card 3: 5
+ Card 4: 4
+ Card 5: 8
+ Card 6: 7
+ Card 7: 9
+ (lldb)
+ 
+ Result with cout in main:
+ 
+ 0
+ Enter the number of cards to be dealt in a hand: 7
+ Enter 7 numeric cards, no face cards. Use 2 - 9.
+ Card 1: 2
+ Card 2: 6
+ Card 3: 5
+ Card 4: 4
+ Card 5: 8
+ Card 6: 7
+ Card 7: 9
  Straight!
  Program ended with exit code: 0
  
