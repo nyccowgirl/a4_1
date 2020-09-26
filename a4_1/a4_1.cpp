@@ -115,6 +115,7 @@ void getCards(int hand[]) {
 // reference variable.
 
 void validateInput(int &card, int cardNum) {
+    
     while (!(card >= LOW && card <= HIGH)) {
         cout << "Invalid input: Cards can only be between ";
         cout << LOW << " and " << HIGH << "." << endl;
@@ -136,16 +137,6 @@ void countCards(const int hand[]) {
     for (int x = 0; x < NUM_CARDS; x++) {
         COUNT[hand[x] - LOW]++;
     }
-    
-//    cout << "COUNT = {";                          // TEMP: To debug
-//    for (int x = 0; x < NUM_INT; x++) {
-//        if (x == (NUM_INT - 1)) {
-//            cout << COUNT[x] << "}" << endl;
-//        } else {
-//            cout << COUNT[x] << ", ";
-//        }
-//    }
-    
 }
 
 
@@ -165,9 +156,6 @@ void countCards(const int hand[]) {
 // wouldn't be a risk of 3 4s and 3 5s being treated as 2-pair hand with >= vs. ==.
 
 bool containsFourOfaKind(const int hand[]) {
-//    int count[NUM_INT] = {0};
-//
-//    countCards(hand, count);
         
     for (int x = 0; x < NUM_INT; x++) {
         if (COUNT[x] >= 4) {
@@ -190,23 +178,6 @@ bool containsFourOfaKind(const int hand[]) {
 // complete the full house.
 
 bool containsFullHouse(const int hand[]) {
-//    int count[NUM_INT] = {0};
-//    bool threeOfaKind = false, pair = false;
-    
-//    countCards(hand, count);
-    
-//    for (int x = 0; x < NUM_INT; x++) {
-//        if (!threeOfaKind && count[x] >= 3) {
-//            threeOfaKind = true;
-//        } else if (count[x] >= 2) {
-//            pair = true;
-//        }
-//
-//        if (threeOfaKind && pair) {
-//            return true;
-//        }
-//    }
-//    return false;
     
     if (containsThreeOfaKind(hand) && containsTwoPair(hand)) {
         return true;
@@ -221,22 +192,21 @@ bool containsFullHouse(const int hand[]) {
 
 // Definition of function containsStraight. Function passes in array of cards. It
 // traverses the global COUNT array to determines if there is a straight and returns true.
-// Otherwise, it returns false. See additional note in function containsFourOfaKind.
+// Otherwise, it returns false. For hands larger than five cards, sequence is restarted to
+// zero when a number does not have a card to ensure that the card number value is in
+// sequential order up to five. See additional note in function containsFourOfaKind.
 
 bool containsStraight(const int hand[]) {
-//    int count[NUM_INT] = {0};
-    int straight = 0;
-    
-//    countCards(hand, count);
+    int sequence = 0;
     
     for (int x = 0; x < NUM_INT; x++) {
         if (COUNT[x] > 0) {
-            straight++;
+            sequence++;
         } else {
-            straight = 0;
+            sequence = 0;
         }
         
-        if (straight == 5) {
+        if (sequence == 5) {
             return true;
         }
     }
@@ -253,9 +223,6 @@ bool containsStraight(const int hand[]) {
 // true. Otherwise, it returns false. See additional note in function containsFourOfaKind.
 
 bool containsThreeOfaKind(const int hand[]) {
-//    int count[NUM_INT] = {0};
-    
-//    countCards(hand, count);
     
     for (int x = 0; x < NUM_INT; x++) {
         if (COUNT[x] >= 3) {
@@ -275,11 +242,8 @@ bool containsThreeOfaKind(const int hand[]) {
 // Otherwise, it returns false. See additional note in function containsFourOfaKind.
 
 bool containsTwoPair(const int hand[]) {
-//    int count[NUM_INT] = {0};
     int pair = 0;
-    
-//    countCards(hand, count);
-    
+        
     for (int x = 0; x < NUM_INT; x++) {
         if (COUNT[x] >= 2) {
             pair++;
@@ -297,15 +261,11 @@ bool containsTwoPair(const int hand[]) {
 
 
 
-// Definition of function containsPair. Function passes in array of cards. It calls
-// function countCards to count number of each value (e.g., 2 to 9) and determines if there
-// is a pair and returns true. Otherwise, it returns false. See additional note in function
-// containsFourOfaKind.
+// Definition of function containsPair. Function passes in array of cards. It traverses the
+// global COUNT array to determines if there is a pair and returns true. Otherwise, it
+// returns false. See additional note in function containsFourOfaKind.
 
 bool containsPair(const int hand[]) {
-//    int count[NUM_INT] = {0};
-//
-//    countCards(hand, count);
     
     for (int x = 0; x < NUM_INT; x++) {
         if (COUNT[x] >= 2) {
