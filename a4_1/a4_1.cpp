@@ -182,26 +182,33 @@ bool containsFourOfaKind(const int hand[]) {
 
 
 // Definition of function containsFullHouse. Function passes in array of cards. It calls
-// function countCards to count number of each value (e.g., 2 to 9) and determines if there
-// is a full house (3 of a kind and pair) and returns true. Otherwise, it returns false. See
-// additional note in function containsFourOfaKind.
+// functions containsThreeOfaKind and containsTwoPair to determine if there is a full
+// house. See additional note in function containsFourOfaKind. Since a three of a kind could
+// also be viewed as a pair, calling function containsTwoPair would account for the
+// duplication in a value that had 3+ cards to ensure another value had a pair of cards to
+// complete the full house.
 
 bool containsFullHouse(const int hand[]) {
-    int count[NUM_INT] = {0};
-    bool threeOfaKind = false, pair = false;
+//    int count[NUM_INT] = {0};
+//    bool threeOfaKind = false, pair = false;
     
-    countCards(hand, count);
+//    countCards(hand, count);
     
-    for (int x = 0; x < NUM_INT; x++) {
-        if (!threeOfaKind && count[x] >= 3) {
-            threeOfaKind = true;
-        } else if (count[x] >= 2) {
-            pair = true;
-        }
-        
-        if (threeOfaKind && pair) {
-            return true;
-        }
+//    for (int x = 0; x < NUM_INT; x++) {
+//        if (!threeOfaKind && count[x] >= 3) {
+//            threeOfaKind = true;
+//        } else if (count[x] >= 2) {
+//            pair = true;
+//        }
+//
+//        if (threeOfaKind && pair) {
+//            return true;
+//        }
+//    }
+//    return false;
+    
+    if (containsThreeOfaKind(hand) && containsTwoPair(hand)) {
+        return true;
     }
     return false;
 }
