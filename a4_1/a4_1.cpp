@@ -335,4 +335,74 @@ bool containsPair(const int hand[]) {
  Straight!
  Program ended with exit code: 0
  
+ Enter the number of cards to be dealt in a hand: 5
+ Enter 5 numeric cards, no face cards. Use 2 - 9.
+ Card 1: 2
+ Card 2: 5
+ Card 3: 3
+ Card 4: 8
+ Card 5: 7
+ High Card!
+ Program ended with exit code: 0
+ 
+ Enter the number of cards to be dealt in a hand: 5
+ Enter 5 numeric cards, no face cards. Use 2 - 9.
+ Card 1: 2
+ Card 2: 5
+ Card 3: 3
+ Card 4: 5
+ Card 5: 7
+ One Pair!
+ Program ended with exit code: 0
+ 
+ Enter the number of cards to be dealt in a hand: 5
+ Enter 5 numeric cards, no face cards. Use 2 - 9.
+ Card 1: 2
+ Card 2: 5
+ Card 3: 3
+ Card 4: 5
+ Card 5: 3
+ Two Pairs!
+ Program ended with exit code: 0
+ 
+ Enter the number of cards to be dealt in a hand: 5
+ Enter 5 numeric cards, no face cards. Use 2 - 9.
+ Card 1: 5
+ Card 2: 5
+ Card 3: 3
+ Card 4: 5
+ Card 5: 7
+ Three of a Kind!
+ Program ended with exit code: 0
+ 
+ Enter the number of cards to be dealt in a hand: 5
+ Enter 5 numeric cards, no face cards. Use 2 - 9.
+ Card 1: 3
+ Card 2: 5
+ Card 3: 6
+ Card 4: 4
+ Card 5: 7
+ Straight!
+ Program ended with exit code: 0
+ 
+ Enter the number of cards to be dealt in a hand: 5
+ Enter 5 numeric cards, no face cards. Use 2 - 9.
+ Card 1: 5
+ Card 2: 7
+ Card 3: 5
+ Card 4: 7
+ Card 5: 7
+ Full House!
+ Program ended with exit code: 0
+ 
+ Enter the number of cards to be dealt in a hand: 5
+ Enter 5 numeric cards, no face cards. Use 2 - 9.
+ Card 1: 2
+ Card 2: 5
+ Card 3: 5
+ Card 4: 5
+ Card 5: 5
+ Four of a Kind!
+ Program ended with exit code: 0
+ 
  */
