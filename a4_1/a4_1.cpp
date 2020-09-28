@@ -7,9 +7,9 @@
  
  Assignment 4.1
  
- Program reads five or more cards from user, analyzes the cards and prints out the category
- of poker hand that it represents: four of a kind, full house, straight, three of a kind,
- two pairs, pair, and high card.
+ Program reads five or more cards from user, analyzes the cards and prints out the highest
+ category of poker hand that it represents: four of a kind, full house, straight, three of
+ a kind, two pairs, pair, and high card.
  
  Created by nyccowgirl on 9/24/20.
  Copyright © 2020 nyccowgirl. All rights reserved.
@@ -38,9 +38,7 @@ bool containsPair(const int hand[]);
 
 int main(int argc, const char * argv[]) {
     int hand[NUM_CARDS];                    // Holds array of cards for a hand
-    
-//    cout << "";            // What about a cout causes program to not work for cards > 6?
-    
+        
     getNumCards();
     getCards(hand);
     countCards(hand);
@@ -89,8 +87,8 @@ void getNumCards() {
 
 
 // Definition of getCards. Function passes in an uninitialized array of integers and uses
-// a global variable for size of hand. It gets the user input for each card in a hand with
-// integer values from LOW to HIGH (e.g., 2 to 9) and stores it into the array.
+// a global variable/constant for size of hand. It gets the user input for each card in a
+// hand with integer values from LOW to HIGH (e.g., 2 to 9) and stores it into the array.
 
 void getCards(int hand[]) {
     int card;
@@ -147,15 +145,16 @@ void countCards(const int hand[]) {
 
 
 // Definition of function containsFourOfaKind. Function passes in array of cards. It
-// traverses the global COUNT array to determines if there is a four of a kind and returns
+// traverses the global COUNT array to determine if there is a four of a kind and returns
 // true. Otherwise, it returns false. Note in the functions testing for the type of hand,
 // greater than or equal to (>=) is used rather than equal to (==) to cover all possible
 // hand values for the number. This captures test cases where there are larger hands (e.g.,
-// for 7-card hand containing 3 4s and 3 5s, the second three of a kind in
+// for 7-card hand containing 3 4s and 3 5s; the second three of a kind in
 // count array would not be viewed as a possible pair for a full house if it is only
 // considered a three of a kind (== 3) and not a possible pair (>= 2) as well. Since the
 // if/else statement in the main function looks for highest value hand first, there
-// wouldn't be a risk of 3 4s and 3 5s being treated as 2-pair hand with >= vs. ==.
+// wouldn't be a risk of 3 4s and 3 5s being treated as 2-pair hand as the winning hand
+// with >= vs. ==.
 
 bool containsFourOfaKind(const int hand[]) {
         
@@ -193,7 +192,7 @@ bool containsFullHouse(const int hand[]) {
 
 
 // Definition of function containsStraight. Function passes in array of cards. It
-// traverses the global COUNT array to determines if there is a straight and returns true.
+// traverses the global COUNT array to determine if there is a straight and returns true.
 // Otherwise, it returns false. For hands larger than five cards, sequence is restarted to
 // zero when a number does not have a card to ensure that the card number value is in
 // sequential order up to five. See additional note in function containsFourOfaKind.
@@ -221,7 +220,7 @@ bool containsStraight(const int hand[]) {
 
 
 // Definition of function containsThreeOfaKind. Function passes in array of cards. It
-// traverses the global COUNT array to determines if there is a three of a kind and returns
+// traverses the global COUNT array to determine if there is a three of a kind and returns
 // true. Otherwise, it returns false. See additional note in function containsFourOfaKind.
 
 bool containsThreeOfaKind(const int hand[]) {
@@ -240,7 +239,7 @@ bool containsThreeOfaKind(const int hand[]) {
 
 
 // Definition of function containsTwoPairs. Function passes in array of cards. It
-// traverses the global COUNT array to determines if there are two pairs and returns true.
+// traverses the global COUNT array to determine if there are two pairs and returns true.
 // Otherwise, it returns false. See additional note in function containsFourOfaKind.
 
 bool containsTwoPair(const int hand[]) {
@@ -264,7 +263,7 @@ bool containsTwoPair(const int hand[]) {
 
 
 // Definition of function containsPair. Function passes in array of cards. It traverses the
-// global COUNT array to determines if there is a pair and returns true. Otherwise, it
+// global COUNT array to determine if there is a pair and returns true. Otherwise, it
 // returns false. See additional note in function containsFourOfaKind.
 
 bool containsPair(const int hand[]) {
