@@ -22,9 +22,9 @@ const int LOW = 2;                          // Defines lowest value that a card 
 const int HIGH = 9;                         // Defines highest value that a card can have
 const int NUM_INT = (HIGH - LOW + 1);       // Defines range of values that a card can have
 int COUNT[NUM_INT] = {0};                   // Defines initialization of count array
-int NUM_CARDS = 10;                         // Defines initial no. of cards to get from user
+const int NUM_CARDS = 10;                   // Defines initial no. of cards to get from user
 
-int getNumCards(int &num);
+//int getNumCards();
 void getCards(int hand[]);
 void validateInput(int &card, int cardNum);
 void countCards(const int hand[]);
@@ -71,16 +71,16 @@ int main(int argc, const char * argv[]) {
 // a hand, validates it to ensure that there is at least one card and assigns it to global
 // variable, which was initially assigned a high number for memory allocation purposes.
 
-//int getNumCards(int &num) {
+//int getNumCards() {
 //    do {
 //        cout << "Enter the number of cards to be dealt in a hand: ";
-//        cin >> num;
+//        cin >> NUM_CARDS;
 //
-//        if (num < 1) {
+//        if (NUM_CARDS < 1) {
 //            cout << "Invalid input: A hand cannot have less than 1 card." << endl;
 //        }
-//    } while (num < 1);
-//    return num;
+//    } while (NUM_CARDS < 1);
+//    return NUM_CARDS;
 //}
 
 
