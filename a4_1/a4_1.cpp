@@ -22,7 +22,8 @@ const int LOW = 2;                          // Defines lowest value that a card 
 const int HIGH = 9;                         // Defines highest value that a card can have
 const int NUM_INT = (HIGH - LOW + 1);       // Defines range of values that a card can have
 int COUNT[NUM_INT] = {0};                   // Defines initialization of count array
-const int NUM_CARDS = 10;                   // Defines initial no. of cards to get from user
+const int NUM_CARDS = 5;                    // Defines initial no. of cards (to be modified
+                                            // for test cases)
 
 //int getNumCards();
 void getCards(int hand[]);
@@ -281,7 +282,6 @@ bool containsPair(const int hand[]) {
 
 /*
  
- Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 8
  Card 2: 7
@@ -291,7 +291,6 @@ bool containsPair(const int hand[]) {
  Two Pairs!
  Program ended with exit code: 0
  
- Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 8
  Card 2: 7
@@ -301,7 +300,6 @@ bool containsPair(const int hand[]) {
  Straight!
  Program ended with exit code: 0
  
- Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 9
  Card 2: 2
@@ -311,9 +309,6 @@ bool containsPair(const int hand[]) {
  High Card!
  Program ended with exit code: 0
  
- Enter the number of cards to be dealt in a hand: 0
- Invalid input: A hand cannot have less than 1 card.
- Enter the number of cards to be dealt in a hand: 6
  Enter 6 numeric cards, no face cards. Use 2 - 9.
  Card 1: 5
  Card 2: 6
@@ -324,7 +319,6 @@ bool containsPair(const int hand[]) {
  Full House!
  Program ended with exit code: 0
  
- Enter the number of cards to be dealt in a hand: 7
  Enter 7 numeric cards, no face cards. Use 2 - 9.
  Card 1: 1
  Invalid input: Cards can only be between 2 and 9.
@@ -338,7 +332,6 @@ bool containsPair(const int hand[]) {
  Straight!
  Program ended with exit code: 0
  
- Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 2
  Card 2: 5
@@ -348,7 +341,6 @@ bool containsPair(const int hand[]) {
  High Card!
  Program ended with exit code: 0
  
- Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 2
  Card 2: 5
@@ -358,7 +350,6 @@ bool containsPair(const int hand[]) {
  One Pair!
  Program ended with exit code: 0
  
- Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 2
  Card 2: 5
@@ -368,7 +359,6 @@ bool containsPair(const int hand[]) {
  Two Pairs!
  Program ended with exit code: 0
  
- Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 5
  Card 2: 5
@@ -378,7 +368,6 @@ bool containsPair(const int hand[]) {
  Three of a Kind!
  Program ended with exit code: 0
  
- Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 3
  Card 2: 5
@@ -388,7 +377,6 @@ bool containsPair(const int hand[]) {
  Straight!
  Program ended with exit code: 0
  
- Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 5
  Card 2: 7
@@ -398,7 +386,6 @@ bool containsPair(const int hand[]) {
  Full House!
  Program ended with exit code: 0
  
- Enter the number of cards to be dealt in a hand: 5
  Enter 5 numeric cards, no face cards. Use 2 - 9.
  Card 1: 2
  Card 2: 5
