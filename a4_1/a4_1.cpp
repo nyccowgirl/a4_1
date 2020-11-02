@@ -179,7 +179,7 @@ bool containsStraight(const int hand[]) {
             sequence = 0;
         }
         
-        if (sequence >= 5) {
+        if (sequence == 5) {
             return true;
         }
     }
